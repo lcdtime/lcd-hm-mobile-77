@@ -1,0 +1,10 @@
+// 整个项目的公共样式
+// 覆盖vant自带样式
+.van-nav-bar {
+    .van-nav-bar__content {
+      background-color: #3196fa;
+      .van-nav-bar__title{
+        color: #fff;
+      }
+    }    
+  }
