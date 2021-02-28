@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- <van-switch v-model="checked" /> -->
-    <!-- 路由输出位置 -->
+    <!-- 路由输出位置一级路由 -->
     <router-view/>
   </div>
 </template>

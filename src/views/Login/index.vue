@@ -33,12 +33,14 @@
         登陆按钮
         </van-button>
    </div>
+   <van-button type="primary" @click="getProflie">获取用户信息</van-button>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 // 导入请求api方法
-import { reqLogin } from '@/api/user'
+import { reqLogin, reqGetProfile } from '@/api/user'
 export default {
   name: 'Login',
   data () {
@@ -50,6 +52,12 @@ export default {
     }
   },
   methods: {
+    // 获取用户个人信息
+    async  getProflie () {
+      const { data } = await reqGetProfile()
+      console.log(data, '====')
+    },
+    ...mapMutations('user', ['getTokenInfo']),
     // 表单验证飞空input事件只要输入事件就会处罚
     validate () {
     // 手机号码非空验证
@@ -99,10 +107,13 @@ export default {
       //   }
       // })
       // 使用封装的登录请求api
-      const res = await reqLogin(this.mobile, this.code)
+      const { data } = await reqLogin(this.mobile, this.code)
       // 请求成功之后覆盖遮罩  // 一个页面上只有一个toast, 它会把上面的Loading状态覆盖掉
       this.$toast.success('成功登陆')
-      console.log(res.data)
+      console.log(data)
+      this.getTokenInfo(data.data)
+      // 跳转页面
+      this.$router.push('/')
     }
   }
 }
