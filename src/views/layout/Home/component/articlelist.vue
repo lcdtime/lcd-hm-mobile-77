@@ -64,6 +64,8 @@ export default {
       // 请求数据追加列表中展开是一个数据
       this.list = data.data.results
       console.log(this.list)
+      // 关闭提示finished false
+      // 列表渲染还没左如grid----for-image----------------------------------------------------------------------
     }
   }
 }
