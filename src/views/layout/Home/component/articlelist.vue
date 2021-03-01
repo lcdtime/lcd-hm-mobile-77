@@ -49,7 +49,7 @@ export default {
     async onLoad () {
       // 异步更新数据
       console.log('当前数据的条数', this.list.length, '数据更新')
-      // 通过时间戳，更新时间戳
+      // 通过时间戳初始值，更新时间戳,判断一下时间错在数据data开始值可以时随意
       if (!this.timestamp) {
         // 默认当前时间, 表示拉取最新的数据
         this.timestamp = +new Date()
